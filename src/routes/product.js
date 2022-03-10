@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { create, edit, get, list, remove } from "../../controller/product";
-import { checkAuth } from "../../middlewares/checkAuth";
+import { create, edit, get, list, remove } from "../controller/product";
+import { checkAuth } from "../middlewares/checkAuth";
 
 const router = Router();
 //get all products
