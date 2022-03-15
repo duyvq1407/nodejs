@@ -4,6 +4,8 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import productRoute from './routes/product'
 import morgan from 'morgan';
+import { readdirSync } from 'fs';
+import path, { dirname } from 'path';
 
 const app = express();
 
@@ -13,7 +15,14 @@ app.use(morgan('tiny'))
 app.use(express.json())
 
 // routes
-app.use("/api", productRoute)
+readdirSync(__dirname + "/routes").forEach((fileName) => {
+    import("./routes/" + fileName)
+        .then(({ default: router }) => router.default)
+        .then((router) => {
+            app.use("/api", router);
+        });
+});
+// app.use("/api", productRoute)
 
 // connect to db
 mongoose.connect("mongodb://localhost:27017/we16310")

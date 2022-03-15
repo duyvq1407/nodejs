@@ -6,11 +6,11 @@ const router = Router();
 //get all products
 router.get('/products', checkAuth, list);
 //get product
-router.get('/products/:id', checkAuth, get);
+router.get('/product/:id', checkAuth, get);
 //delete product
-router.delete('/products/:id', checkAuth, remove);
+router.delete('/product/:id', checkAuth, remove);
 //edit product
-router.put('/products/:id', checkAuth, edit);
+router.put('/product/:id', checkAuth, edit);
 //add product
 router.post('/products', checkAuth, create);
 
