@@ -7,20 +7,21 @@
     <title>Document</title>
 </head>
 <body>
-    <h2 style="text-align: center; font-size: 44px;">Product</h2>
-    <div id="app" style="margin: auto; width: 1200px;">
-    </div>
+    <div id="app"></div>
+    <button onclick="SinhVien.nhap()">Nhập</button>
+    <button onclick="SinhVien.in()">In ra màn hình</button>
     <script>
-        const app = document.querySelector("#app");
-        async function getProducts(){
-            const response = await fetch('http://localhost:3001/api/products');
-            const data = await response.json();
-            console.log(data);
-            data.map((item) => `
-                ${app.innerHTML += `<div style="float:left; margin-right:10px;"><a href="#"><img height="350px" src='${item.img}' > <h3>  ${item.name} </h3></a></div>`}
-            `).join("");
+        const SinhVien = new Object();
+        const arrSV = new Array();
+        SinhVien.nhap = function () {
+            this.name = prompt("mời nhạp tên")
+            this.price = Number(prompt("Mời nhập giá"))
+            console.log(this)
+            arrSV.push(SinhVien)
         }
-        getProducts();
+        SinhVien.in = function () {
+            console.log(arrSV)
+        }
     </script>
 </body>
 </html>

@@ -40,20 +40,16 @@ export const remove = async (req, res) => {
     // res.json(data.filter(item => item.id != req.params.id));
 };
 //edit product
-export const edit = async (req, res) => {
-    const condition = { id: req.params.id }
-    const update = req.body;
+export const edit = async (req,res) =>{
     try {
-        const product = await Product.findOneAndUpdate(condition, update).exec();
+        const product = await Product.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}).exec();
         res.json(product);
     } catch (error) {
         res.status(400).json({
-            error: "Sửa sản phẩm không thành công"
-        })
+            error: "Không thêm được sản phẩm"
+        })        
     }
-    // const result = data.map(item => item.id == req.params.id ? req.body : item);
-    // res.json(result)
-};
+}
 //add product
 export const create = async (req, res) => {
     try {

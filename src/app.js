@@ -4,6 +4,8 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import productRoute from './routes/product'
 import userRoute from './routes/user'
+import categoryRoute from './routes/category'
+
 import morgan from 'morgan';
 import { readdirSync } from 'fs';
 import path, { dirname } from 'path';
@@ -25,6 +27,7 @@ app.use(express.json())
 // });
 app.use("/api", productRoute)
 app.use("/api", userRoute)
+app.use("/api", categoryRoute)
 
 // connect to db
 mongoose.connect("mongodb://localhost:27017/we16310")
