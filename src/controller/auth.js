@@ -1,4 +1,3 @@
-import { use } from "express/lib/application";
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken"
 
@@ -60,3 +59,12 @@ export const register = async (req, res) => {
         })
     }
 };
+
+export const read = async (req, res) => {
+    try {
+        const user = await User.findOne({_id : req.params.id}).exec();
+        res.json
+    } catch (error) {
+        
+    }
+}
