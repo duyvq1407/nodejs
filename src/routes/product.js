@@ -14,6 +14,7 @@ router.delete('/products/:id/:userId', requiredSingIn, isAuth, isAdmin, remove);
 router.put('/products/:id/:userId', requiredSingIn, isAuth, isAdmin, edit);
 //add product
 router.post('/products/:userId', requiredSingIn, isAuth, isAdmin, create);
+// router.post('/products', create);
 
 router.param('userId', userById)
 

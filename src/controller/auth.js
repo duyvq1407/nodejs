@@ -63,7 +63,21 @@ export const register = async (req, res) => {
 export const read = async (req, res) => {
     try {
         const user = await User.findOne({_id : req.params.id}).exec();
-        res.json
+        res.json({
+            user: {
+                _id: user._id,
+                email: user.email,
+                name: user.name
+            }
+        })
+    } catch (error) {
+        
+    }
+}
+export const list = async (req, res) => {
+    try {
+        const user = await User.find({}).exec();
+        res.json(user)
     } catch (error) {
         
     }

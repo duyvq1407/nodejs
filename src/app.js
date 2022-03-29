@@ -9,6 +9,8 @@ import categoryRoute from './routes/category'
 import morgan from 'morgan';
 import { readdirSync } from 'fs';
 import path, { dirname } from 'path';
+import swaggerUI from 'swagger-ui-express';
+import YAML from 'yamljs';
 
 const app = express();
 
@@ -16,6 +18,8 @@ const app = express();
 app.use(cors())
 app.use(morgan('tiny'))
 app.use(express.json())
+
+const swaggerJSDocs = YAML.load('./api.yaml')
 
 // routes
 // readdirSync(__dirname + "/routes").forEach((fileName) => {
@@ -28,6 +32,7 @@ app.use(express.json())
 app.use("/api", productRoute)
 app.use("/api", userRoute)
 app.use("/api", categoryRoute)
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerJSDocs))
 
 // connect to db
 mongoose.connect("mongodb://localhost:27017/we16310")
