@@ -8,14 +8,12 @@ export const login = async (req, res) => {
     try {        
         const user = await User.findOne({email}).exec();
         if (!user) {
-            res.status(400).json({
+            return res.status(400).json({
                 message: "Email không chính xác"
             })
         }
-        // console.log(user.authenticate(password))
-        // console.log(password)
         if (!user.authenticate(password)) {
-            res.status(400).json({
+            return res.status(400).json({
                 message: "Mật khẩu không chính xác"
             })
         }
@@ -41,7 +39,7 @@ export const register = async (req, res) => {
     try {
         const existUser = await User.findOne({email}).exec();
         if (existUser) {
-            res.status(400).json({
+            return res.status(400).json({
                 message: "Tài khoản đã tồn tại"
             })
         }
@@ -54,7 +52,7 @@ export const register = async (req, res) => {
             }
         })
     } catch (error) {
-        res.status(400).json({
+        return res.status(400).json({
             error: "Không thêm được tài khoản"
         })
     }
