@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { addCate, editCate, getCate, listCate, read, removeCate } from "../controller/category";
+import { addCate, editCate, listCate, read, removeCate } from "../controller/category";
 import { userById } from "../controller/user";
 import { isAdmin, isAuth, requiredSingIn } from "../middlewares/checkAuth";
 

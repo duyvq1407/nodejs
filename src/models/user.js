@@ -23,19 +23,17 @@ const userSchema = new Schema({
 }, { timestamps: true});
 
 userSchema.methods = {
+    authenticate(password){
+        return this.password === this.encryptPassword(password)
+    },
     encryptPassword(password){
         if(!password) return
         try {
-            return createHmac("Sha256", this.salt).update(password).digest("hex");
+            return createHmac("Sha256", "abc").update(password).digest("hex");
         } catch (error) {
             console.log(error)
         }
     },
-    authenticate(password){
-        console.log('pass' + this.password);
-        console.log('pass mã hóa' + this.encryptPassword(password))
-        return this.password === this.encryptPassword(password)
-    }
 }
 
 userSchema.pre("save", function(next){

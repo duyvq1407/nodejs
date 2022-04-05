@@ -61,3 +61,15 @@ export const create = async (req, res) => {
         })
     }
 };
+
+export const textSearch = async (req, res) => {
+    try {
+        console.log(req.params.keyword)
+        const products = await Product.find({ _name: req.params.keyword)
+        res.json(products)
+    } catch (error) {
+        res.status(400).json({
+            error: "Không thêm được sản phẩm"
+        })        
+    }
+}
