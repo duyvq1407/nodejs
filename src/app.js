@@ -23,7 +23,7 @@ const swaggerJSDocs = YAML.load('./api.yaml')
 
 // routes
 // readdirSync(__dirname + "/routes").forEach((fileName) => {
-//     import("./routes/" + fileName)
+//     import("./routes/" + fileName)a
 //         .then(({ default: router }) => router.default)
 //         .then((router) => {
 //             app.use("/api", router);

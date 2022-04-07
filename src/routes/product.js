@@ -6,7 +6,8 @@ import { checkAuth, isAdmin, isAuth, requiredSingIn } from "../middlewares/check
 const router = Router();
 //get all products
 router.get('/products', checkAuth, list);
-router.get('/products/keyword=:keyword', checkAuth, textSearch);
+// router.get('/products/orderBy=:orderBy&key=:key', checkAuth, textSearch);
+router.get('/products/search', checkAuth, textSearch);
 //get product
 router.get('/products/:id', checkAuth, get);
 //delete product

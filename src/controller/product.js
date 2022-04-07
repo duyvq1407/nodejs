@@ -16,7 +16,6 @@ export const list = async (req, res) => {
 //get product
 export const get = async (req, res) => {
     try {
-        console.log(req.params.id)
         const product = await Product.findOne({_id: req.params.id}).exec();
         res.json(product)
     } catch (error) {
@@ -63,9 +62,10 @@ export const create = async (req, res) => {
 };
 
 export const textSearch = async (req, res) => {
-    try {
-        console.log(req.params.keyword)
-        const products = await Product.find({ _name: req.params.keyword)
+    try { 
+        console.log(req.query)
+        const conditions = { name : {$regex: req.query.key, $options: "i"}}
+        const products = await Product.find(conditions)
         res.json(products)
     } catch (error) {
         res.status(400).json({
