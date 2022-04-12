@@ -10,6 +10,12 @@ const cartSchema = Schema({
         type: Number,
         required: true
     },
+    name: {
+        type: String
+    },
+    image: {
+        type: String
+    },
     quantity: {
         type: Number, 
         min: 1
