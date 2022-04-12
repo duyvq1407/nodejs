@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import productRoute from './routes/product'
 import userRoute from './routes/user'
 import categoryRoute from './routes/category'
+import cartRoute from './routes/cart'
 
 import morgan from 'morgan';
 import { readdirSync } from 'fs';
@@ -30,6 +31,7 @@ const swaggerJSDocs = YAML.load('./api.yaml')
 //         });
 // });
 app.use("/api", productRoute)
+app.use("/api", cartRoute)
 app.use("/api", userRoute)
 app.use("/api", categoryRoute)
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerJSDocs))

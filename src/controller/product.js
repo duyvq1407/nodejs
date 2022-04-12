@@ -63,7 +63,6 @@ export const create = async (req, res) => {
 
 export const textSearch = async (req, res) => {
     try { 
-        console.log(req.query)
         const conditions = { name : {$regex: req.query.key, $options: "i"}}
         const products = await Product.find(conditions)
         res.json(products)
