@@ -6,6 +6,9 @@ const categorySchema = new Schema({
         minLength: 5,
         required: true,
         unique: true
+    },
+    status: {
+        type: Number
     }
 }, { timestamps: true});
 

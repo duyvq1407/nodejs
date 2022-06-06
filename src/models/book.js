@@ -1,7 +1,8 @@
+import { text } from "express";
 import mongoose , {Schema} from "mongoose";
 const { ObjectId } = mongoose.Types;
 
-const productSchema = new Schema({
+const bookSchema = new Schema({
     name: {
         type: String,
         minLength: 5,
@@ -11,13 +12,22 @@ const productSchema = new Schema({
         type: Number,
         required: true
     },
-    image: {
+    sale_price: {
+        type: Number,
+    },
+    description: {
+        type: String
+    },
+    image_url: {
         type: String,
     },
     category: {
         type: ObjectId,
         ref: "Category"
+    },
+    status: {
+        type: Number
     }
 }, { timestamps: true});
 
-export default mongoose.model('Product', productSchema);
+export default mongoose.model('Book', bookSchema);

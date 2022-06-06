@@ -1,5 +1,5 @@
 import Category from "../models/category";
-import Product from "../models/product";
+import Book from "../models/book";
  
 //get all categories
 export const listCate = async (req, res) => {
@@ -35,7 +35,7 @@ export const removeCate = async (req, res) => {
 
     // res.json(data.filter(item => item.id != req.params.id));
 };
-//edit product
+//edit cate
 export const editCate = async (req,res) =>{
     try {
         const category = await Category.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}).exec();
@@ -49,9 +49,9 @@ export const editCate = async (req,res) =>{
 export const read = async (req, res) => {
     try {
         const category = await Category.findOne({_id: req.params.id}).exec();
-        const products = await Product.find({category}).select('-category').exec();
+        const books = await Book.find({category}).select('-category').exec();
         res.json({
-            category,products
+            category,books
         })
     } catch (error) {
     }
