@@ -37,7 +37,7 @@ app.use("/api", categoryRoute)
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerJSDocs))
 
 // connect to db
-mongoose.connect("mongodb://localhost:27017/we16310")
+mongoose.connect("mongodb://localhost:27017/test-angular")
     .then(() => console.log("Ket noi DB thanh cong"))
     .catch((error) => console.log(error))
 
