@@ -19,9 +19,9 @@ const bookSchema = new Schema({
         type: String
     },
     image_url: {
-        type: String,
+        type: String
     },
-    category: {
+    category_id: {
         type: ObjectId,
         ref: "Category"
     },

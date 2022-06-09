@@ -24,7 +24,8 @@ export const login = async (req, res) => {
                 _id: user._id,
                 email: user.email,
                 name: user.name,
-                role: user.role
+                role: user.role,
+                status: user.status
             }
         })
     } catch (error) {
@@ -35,7 +36,7 @@ export const login = async (req, res) => {
 };
 //register
 export const register = async (req, res) => {
-    const {email, name, password} = req.body;
+    const {email, name, password, role, status} = req.body;
     try {
         const existUser = await User.findOne({email}).exec();
         if (existUser) {
@@ -43,12 +44,14 @@ export const register = async (req, res) => {
                 message: "Tài khoản đã tồn tại"
             })
         }
-        const user = await new User({email, name, password}).save();
+        const user = await new User({email, name, password, role, status}).save();
         res.json({
             user: {
                 _id: user._id,
                 email: user.email,
-                name: user.name
+                name: user.name,
+                status: user.status,
+                role: user.role
             }
         })
     } catch (error) {
@@ -80,3 +83,27 @@ export const list = async (req, res) => {
         
     }
 }
+//edit Book
+export const edit = async (req,res) =>{
+    try {
+        const user = await User.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}).exec();
+        res.json(user);
+    } catch (error) {
+        res.status(400).json({
+            error: "Không sửa được"
+        })        
+    }
+}
+//delete category
+export const remove = async (req, res) => {
+    try {
+        const user = await User.findOneAndDelete({_id: req.params.id});
+        res.json(user)
+    } catch (error) {
+        res.status(400).json({
+            error: "Không tìm được danh mục"
+        })
+    }
+
+    // res.json(data.filter(item => item.id != req.params.id));
+};
