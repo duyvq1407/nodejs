@@ -49,7 +49,8 @@ export const editCate = async (req,res) =>{
 export const read = async (req, res) => {
     try {
         const category = await Category.findOne({_id: req.params.id}).exec();
-        const books = await Book.find({category}).select('-category').exec();
+        console.log(category)
+        const books = await Book.find({category_id: category._id}).select('-category').exec();
         res.json({
             category,books
         })
