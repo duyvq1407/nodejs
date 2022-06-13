@@ -26,7 +26,8 @@ const bookSchema = new Schema({
         ref: "Category"
     },
     status: {
-        type: Number
+        type: Number,
+        default: 1
     }
 }, { timestamps: true});
 

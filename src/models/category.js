@@ -8,7 +8,8 @@ const categorySchema = new Schema({
         unique: true
     },
     status: {
-        type: Number
+        type: Number,
+        default: 1
     }
 }, { timestamps: true});
 

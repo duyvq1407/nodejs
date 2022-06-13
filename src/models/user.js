@@ -21,7 +21,8 @@ const userSchema = new Schema({
         default: 0
     },
     status:{
-        type: Number
+        type: Number,
+        default: 1
     }
 }, { timestamps: true});
 
