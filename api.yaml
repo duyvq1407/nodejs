@@ -1,0 +1,79 @@
+swagger: "2.0"
+info: 
+  description: Mô tả về api...
+  version: 1.0.1
+  title: "Swagger for ecommerce"
+paths: 
+  /api/products: 
+    get:
+      summary: "Lấy danh sách sản phẩm"
+      responses: 
+        "200": 
+          description: Lấy sản phẩm thành công
+        "400": 
+          description: Lấy sản phẩm thất bại
+    post: 
+      summary: "Thêm sản phẩm"
+      responses: 
+        "200":
+          description: Thêm sản phẩm thành công
+        "400":
+          description: Thêm sản phẩm thất bại
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Bắt buộc nhập trường như dưới"
+        required: true
+        schema:
+          $ref: "#/components/schemas/Product"
+  /api/products/{_id}:
+    put:
+      summary: "Sửa sản phẩm"
+      parameters:
+      - in: "path"
+        name: "_id"
+        description: "ID sản phẩm muốn sửa"
+      - in: "body"
+        name: "body"
+        description: "Dữ liệu muốn sửa"
+        required: true
+        schema:
+          $ref: "#/components/schemas/Product"
+      responses: 
+        "200":
+          description: Sửa sản phẩm thành công
+        "400":
+          description: Sửa sản phẩm thất bại
+    get:
+      summary: "Tìm sản phẩm theo mã"
+      parameters:
+      - in: "path"
+        name: "_id"
+        description: "ID sản phẩm muốn tìm"
+        required: true
+      responses: 
+        "200":
+          description: Tìm sản phẩm thành công
+          schema:
+            $ref: "#/components/schemas/Product"
+        "400":
+          description: Sửa sản phẩm thất bại
+
+#Models
+components: 
+  schemas:
+    Product:
+      properties:
+        _id:
+          type: string
+        name:
+          type: string
+          minLength: 5
+        price: 
+          type: integer
+        category:
+          type: string
+      required:
+        - name
+        - price
+      
