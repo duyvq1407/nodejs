@@ -65,11 +65,11 @@ export const read = async (req, res) => {
     try {
         const user = await User.findOne({_id : req.params.id}).exec();
         res.json({
-            user: {
-                _id: user._id,
-                email: user.email,
-                name: user.name
-            }
+            _id: user._id,
+            email: user.email,
+            name: user.name,
+            role: user.role,
+            status: user.status
         })
     } catch (error) {
         
