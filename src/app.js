@@ -40,7 +40,7 @@ mongoose.connect("mongodb://localhost:27017/WE16304_Angular")
     .catch((error) => console.log(error))
 
 // connect
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     console.log("Server của bạn đang chạy cổng ", PORT);
 });

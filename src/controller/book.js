@@ -4,28 +4,13 @@ import Book from "../models/book";
 
 //get all Books
 export const list = async (req, res) => {
-    const PAGE_SIZE = 5;
-    const page = parseInt(param.query.page);
-    if(page){
-        var skip = (page - 1) * PAGE_SIZE
-        try {
-            const books = await Book.find({}).skip(skip).limit(PAGE_SIZE).exec();
-            res.json(books)
-        } catch (error) {
-            res.status(400).json({
-                error: "Không có sản phẩm"
-            })
-        }        
-
-    }else{
-        try {
-            const books = await Book.find({}).exec();
-            res.json(books)
-        } catch (error) {
-            res.status(400).json({
-                error: "Không có sản phẩm"
-            })
-        }        
+    try {
+        const books = await Book.find({}).exec();
+        res.json(books)
+    } catch (error) {
+        res.status(400).json({
+            error: "Không có sản phẩm"
+        })
     }
 };
 //get Book
